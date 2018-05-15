@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/jv.iml" filepath="$PROJECT_DIR$/jv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jv-sea/jv-sea.iml" filepath="$PROJECT_DIR$/jv-sea/jv-sea.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jv-weixin/jv-weixin.iml" filepath="$PROJECT_DIR$/jv-weixin/jv-weixin.iml" />
     </modules>
   </component>
 </project>
