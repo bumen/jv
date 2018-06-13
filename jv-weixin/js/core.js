@@ -8,18 +8,18 @@ var config = {
     //baseUrl: "http://guoan.itimi.cn/MatchDay/",
     //baseUrl: "http://zhonghe.itimi.cn/",
     //baseUrl:"http://cms.itimi.cn",
-    baseUrl: "http://127.0.0.1:9001/report/",
+    baseUrl: "http://189m63k096.iask.in:9000/fans/",
 
     //图片上传地址
     //uploadUrl: 'http://upload.itimi.cn/fileup/upload',
     uploadUrl: 'http://127.0.0.1:8080/file/upload',
     //项目名称
-    projectName: "/itimi",
+    projectName: "/fans",
 
     //一、前端本地使用
     //cookiePath: "/wechatOfficialAccount",
     //二、83服使用
-    cookiePath: "/itimiTob",
+    cookiePath: "/",
     //三、线上使用
     //cookiePath: "/",
 };

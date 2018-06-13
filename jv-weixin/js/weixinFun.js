@@ -7,6 +7,7 @@ function init() {
 
     // 测试认证消息
     //index.testAuthorizationTest();
+    
 }
 
 
@@ -20,7 +21,7 @@ var weixinFun = {
     testWeixinSDK: function () {
         // 查看接口是否可用
         wx.checkJsApi({
-            jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+            jsApiList: ['getBrandWCPayRequest','onMenuShareAppMessage', 'onMenuShareTimeline'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
             success: function (res) {
                 // 以键值对的形式返回，可用的api值true，不可用为false
                 // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}

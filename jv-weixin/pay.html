@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>itimi-pay</title>
+</head>
+<body>
+<a href="#" onclick="itimi.client.pay1()" >支付1-【公众-正常】</a> 订单金额1.01元，用户支付成功
+<br>
+<br>
+<a href="#" onclick="itimi.client.pay2()" >支付2-【公众-正常】</a>订单金额1.02元（含0.01元充值代金券，0.02元免充值代金券），用户支付成功
+<br>
+<br>
+<a href="#" onclick="itimi.client.pay3()" >支付3-【公众-异常】</a>订单金额1.3元，用户支付成功，商户未收到微信支付结果通知
+<br>
+<a href="#" onclick="itimi.client.payQuery3()" >查询3-【公众-异常】</a>
+<br>
+<br>
+<a href="#" onclick="itimi.client.pay4()" >支付4-【公众-异常】</a>订单金额1.31元，用户支付失败，商户未收到微信支付结果通知
+<br>
+<a href="#" onclick="itimi.client.payQuery4()" >查询4-【公众-异常】</a>
+<br>
+<br>
+<a href="#" onclick="itimi.client.pay5()" >支付5-【公众-异常】</a>订单金额1.32元，用户支付成功，微信支付重复通知商户
+<br>
+<br>
+<a href="#" onclick="itimi.client.pay6()" >支付6-【公众-异常】</a>订单金额1.33元，用户支付成功，微信支付通知签名非法
+<br>
+<br>
+<a href="#" onclick="itimi.client.pay7()" >支付7-【公众-异常】</a>订单金额1.34元，用户支付成功，微信支付通知关键信息不一致
+
+
+<br>
+<br>
+</body>
+<script  type="text/javascript"  src="js/jquery-3.2.1.min.js"></script>
+<script  type="text/javascript"  src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script  type="text/javascript"  src="js/core.js"></script>
+<script  type="text/javascript"  src="js/weixinInit.js"></script>
+<script  type="text/javascript"  src="js/weixinFun.js"></script>
+<script  type="text/javascript"  src="js/pay.js"></script>
+</html>

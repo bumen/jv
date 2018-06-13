@@ -1,5 +1,5 @@
 var weixin = {
-    appId: "wx01de8177114a48fd",
+    appId: "wxc57e8e97748f260e",
 
     // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
     debug: true,
@@ -8,16 +8,15 @@ var weixin = {
      * 登录，获取用户OpenId，如果要登录必须通过这个方法
      */
     login: function () {
-        debugger
         var code = getParameter("code");
         if (code) {
             log.info("成功获取用户code：" + code);
-
+            
             // 执行登录
             log.info("开始登录");
             msgContainer.addMsgListenerOnce("GC_Login", this.loginSuccess, this);
-            var login = new LoginMsg("Weixin");
-            login.send(code);
+            var login = new LoginMsg("weixin");
+            login.send("18301009002", "123123", code);
 
         } else {
             // log.error("没有获取到用户Code,登录失败");
@@ -36,15 +35,14 @@ var weixin = {
 
     // 用户登录成功
     loginSuccess: function (msg, data) {
-        debugger
 
         log.info("登录成功");
 
         Caches.setSessionId(msg.param);
-        setCookie("ip_port", msg.ip_port);
-
+        Caches.setServerIp(msg.ip_port);
+        
         log.info("跳转业务界面");
-        window.location.href = "../qrCode.html";
+        window.location.href = "pay.html";
     },
 
     /**
@@ -62,7 +60,7 @@ var weixin = {
             msgContainer.addMsgListenerOnce("GC_GetWeixinTicket", this.getWeixinTicket, this);
 
             var msg = new Msg("CG_GetWeixinTicket");
-            msg.send();
+            msg.sendByBaseUrl();
         }
     },
 
@@ -114,14 +112,14 @@ var weixin = {
     },
 
     getWeixinTicket: function (msg, data) {
-        if (msg.responseCode == 1) {
+        if (msg.responseCode == 0) {
             var ticket = msg.ticket;
             var expire = msg.expires;
 
             Caches.setTicket(ticket, expire);
 
             // 微信初始化
-            this.weixinInit(ticket);
+            this.weixinInit();
         } else {
             log.error("微信Ticket获取失败！");
         }
@@ -180,7 +178,7 @@ var weixin = {
             signature: signature,
 
             // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-            jsApiList: ['getLocation', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'checkJsApi', 'getNetworkType', 'scanQRCode']
+            jsApiList: ['getLocation', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'checkJsApi', 'getNetworkType', 'scanQRCode', 'chooseWXPay']
         };
 
         return config;
@@ -208,4 +206,21 @@ var weixin = {
 
         wx.config(data);
     },
+    pay: function(param, callback, target) {
+    	wx.chooseWXPay({
+			  timestamp: param.timestamp,
+			  nonceStr: param.nonceStr,
+			  package: param.packageStr,
+			  signType: param.signType,
+			  paySign: param.paySign,
+			  success: function(res){
+				  alert("客户端支付返回");
+				  
+				  callback.call(target, res);
+			  }
+    	});
+    	  
+	    console.log("hehe: " + "update7");
+    }
 };
+
